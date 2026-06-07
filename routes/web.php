@@ -8,7 +8,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/types', [TypeController::class, 'index']);
+Route::get('/types', [TypeController::class, 'index'])->name('type.index') ;
+Route::get('/types/create', [TypeController::class, 'create'])->middleware(['auth'])->name('type.create');
+Route::post('/types', [TypeController::class, 'store'])->middleware(['auth'])->name('type.store');
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
