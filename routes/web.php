@@ -2,11 +2,14 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TypeController;
+use App\Http\Controllers\PokemonController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/pokemons', [PokemonController::class, 'index'])->name('pokemon.index') ;
 
 Route::get('/types', [TypeController::class, 'index'])->name('type.index') ;
 Route::get('/types/create', [TypeController::class, 'create'])->middleware(['auth'])->name('type.create');
