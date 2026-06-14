@@ -21,11 +21,20 @@
                 <li class="pokemon-card">
                     <span
                         class="pokemon-card__number">#{{ str_pad($pokemon->pokedex_number, 3, '0', STR_PAD_LEFT) }}</span>
+
                     <div class="pokemon-card__imgwrap">
                         <img class="pokemon-card__img" src="{{ $pokemon->sprite }}" alt="{{ $pokemon->name }}"
                             loading="lazy">
                     </div>
+
                     <p class="pokemon-card__name">{{ $pokemon->name }}</p>
+
+                    <div class="pokemon-card__types">
+                        @foreach ($pokemon->types as $type)
+                            <span class="type-badge"
+                                style="background-color: {{ $type->color }}">{{ $type->name }}</span>
+                        @endforeach
+                    </div>
                 </li>
             @endforeach
         </ul>
