@@ -9,7 +9,7 @@ class PokemonController extends Controller
 {
     public function index()
     {
-        $pokemons = Pokemon::all();
+        $pokemons = Pokemon::with('types')->orderBy('pokedex_number')->get();
         return view('pokemons.index', ['pokemons' => $pokemons]); // Avec view doit return le path donc dossier/blade.php (pokemon/index.blade.php)
     }
 
