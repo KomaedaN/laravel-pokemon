@@ -15,7 +15,8 @@ Route::get('/types', [TypeController::class, 'index'])->name('type.index') ;
 Route::get('/types/create', [TypeController::class, 'create'])->middleware(['auth'])->name('type.create');
 Route::post('/types', [TypeController::class, 'store'])->middleware(['auth'])->name('type.store');
 
-
+Route::get('/pokemons/create', [PokemonController::class, 'create'])->middleware(['auth'])->name('pokemon.create');
+Route::post('/pokemons', [PokemonController::class, 'store'])->middleware(['auth'])->name('pokemon.store');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
