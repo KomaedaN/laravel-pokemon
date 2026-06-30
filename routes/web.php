@@ -10,6 +10,8 @@ Route::get('/', function () {
 });
 
 Route::get('/pokemons', [PokemonController::class, 'index'])->name('pokemon.index') ;
+Route::get('/pokemons/{pokemon}/edit', [PokemonController::class, 'edit'])->middleware(['auth'])->name('pokemon.edit');
+Route::put('/pokemons/{pokemon}', [PokemonController::class, 'update'])->middleware(['auth'])->name('pokemon.update');
 
 Route::get('/types', [TypeController::class, 'index'])->name('type.index') ;
 Route::get('/types/create', [TypeController::class, 'create'])->middleware(['auth'])->name('type.create');
@@ -28,3 +30,4 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
