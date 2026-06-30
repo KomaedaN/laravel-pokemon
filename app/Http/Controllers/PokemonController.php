@@ -11,7 +11,26 @@ class PokemonController extends Controller
     public function index()
     {
         $pokemons = Pokemon::with('types')->orderBy('pokedex_number')->get();
-        return view('pokemons.index', ['pokemons' => $pokemons]); // Avec view doit return le path donc dossier/blade.php (pokemon/index.blade.php)
+        return view('pokemons.index', ['pokemons' => $pokemons]);
+    }
+
+    public function create()
+    {
+        $types = Type::all();
+        return view('pokemons.create', ['types' => $types]);
+    }
+
+    public function store()
+    {
+        $pokemon = new Pokemon();
+        $pokemon->pokedex_number = request()->pokedex_number;
+        $pokemon->name = request()->name;
+        $pokemon->sprite = request()->sprite;
+        $pokemon->save();
+
+        $pokemon->types()->attach(request()->types ?? []);
+
+        return redirect()->route('pokemon.index');
     }
 
     public function edit(Pokemon $pokemon)
@@ -22,7 +41,7 @@ class PokemonController extends Controller
 
     public function update(Pokemon $pokemon)
     {
-        $pokemon->pokedex_number = request()->pokedex_number; 
+        $pokemon->pokedex_number = request()->pokedex_number;
         $pokemon->name = request()->name;
         $pokemon->sprite = request()->sprite;
         $pokemon->save();
@@ -31,5 +50,4 @@ class PokemonController extends Controller
 
         return redirect()->route('pokemon.index');
     }
-
 }
