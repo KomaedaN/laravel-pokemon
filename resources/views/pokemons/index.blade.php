@@ -19,6 +19,7 @@
         <ul class="pokemon-grid">
             @foreach ($pokemons as $pokemon)
                 <li class="pokemon-card">
+                    <a href="{{ route('pokemon.edit', $pokemon) }}" class="pokemon-card__link">
                     <span
                         class="pokemon-card__number">#{{ str_pad($pokemon->pokedex_number, 3, '0', STR_PAD_LEFT) }}</span>
 
@@ -35,6 +36,7 @@
                                 style="background-color: {{ $type->color }}">{{ $type->name }}</span>
                         @endforeach
                     </div>
+                    </a>
                 </li>
             @endforeach
         </ul>
