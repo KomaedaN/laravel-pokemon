@@ -40,6 +40,7 @@
                 </li>
             @endforeach
         </ul>
+        <a href="{{ route('pokemon.create') }}">Créer un nouveau Pokémon</a>
     </div>
 </body>
 </x-app-layout>

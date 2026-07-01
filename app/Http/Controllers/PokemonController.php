@@ -20,18 +20,24 @@ class PokemonController extends Controller
         return view('pokemons.create', ['types' => $types]);
     }
 
-    public function store()
-    {
-        $pokemon = new Pokemon();
-        $pokemon->pokedex_number = request()->pokedex_number;
-        $pokemon->name = request()->name;
-        $pokemon->sprite = request()->sprite;
-        $pokemon->save();
+   public function store()
+{
+    request()->validate([
+        'pokedex_number' => 'required|integer',
+        'name' => 'required|string',
+        'sprite' => 'nullable|url',
+    ]);
 
-        $pokemon->types()->attach(request()->types ?? []);
+    $pokemon = new Pokemon();
+    $pokemon->pokedex_number = request()->pokedex_number;
+    $pokemon->name = request()->name;
+    $pokemon->sprite = request()->sprite;
+    $pokemon->save();
 
-        return redirect()->route('pokemon.index');
-    }
+    $pokemon->types()->attach(request()->types ?? []);
+
+    return redirect()->route('pokemon.index');
+}
 
     public function edit(Pokemon $pokemon)
     {

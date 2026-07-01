@@ -17,7 +17,13 @@
 
         <form action="{{ route('pokemon.store') }}" method="post">
             @csrf
-
+@if ($errors->any())
+    <ul style="color: red;">
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+@endif
             Numéro Pokédex : </br>
             <input type="number" name="pokedex_number" value="{{ old('pokedex_number') }}" />
             </br>
