@@ -10,7 +10,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-// ✅ myindex AVANT resource
+
 Route::get('teams/myindex', [TeamController::class, 'myindex'])->middleware(['auth'])->name('teams.myindex');
 Route::resource('teams', TeamController::class);
 

@@ -19,9 +19,9 @@ class TeamPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Team $team): bool
+    public function view(?User $user, Team $team): bool
     {
-        return $user->id === $team->user_id;
+        return true;
     }
 
     /**

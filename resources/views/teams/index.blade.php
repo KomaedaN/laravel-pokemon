@@ -18,8 +18,6 @@
             <span class="pokedex__count">{{ $teams->count() }} équipe(s)</span>
         </header>
 
-        <p><a href="{{ route('teams.create') }}">+ Créer une nouvelle équipe</a></p>
-
         @if ($teams->isEmpty())
             <p>Tu n'as pas encore d'équipe.</p>
         @else
