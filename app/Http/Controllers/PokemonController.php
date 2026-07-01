@@ -8,7 +8,7 @@ class PokemonController extends Controller
     public function index()
     {
         $pokemons = Pokemon::all();
-        return view('pokemons.index', ['pokemons' => $pokemons]);
+        return view('pokemons.index', ['pokemons' => $pokemons]); //Avec view doit return le path donc dossie/blade.php (pokemon/index.blade.php)
     }
 
     public function create()
