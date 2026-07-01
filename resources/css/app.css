@@ -141,3 +141,9 @@ body {
         color: #fff;
     }
 }
+
+.pokemon-card__link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
