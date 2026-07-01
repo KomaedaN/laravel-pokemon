@@ -120,3 +120,21 @@ body {
     font-weight: 700;
     color: #2b3145;
 }
+.pokemon-card__types {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+.type-badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 999px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+    cursor: pointer;
+}

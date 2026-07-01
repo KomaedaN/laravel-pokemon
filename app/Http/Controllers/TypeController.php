@@ -27,4 +27,10 @@ class TypeController extends Controller
 
         return redirect()->route('type.index'); // Avec redirect -> route on se base sur le nom de la route
     }
+
+    public function show(Type $type)
+{
+    $pokemons = $type->pokemons;
+    return view('types.show', ['type' => $type, 'pokemons' => $pokemons]);
+}
 }
