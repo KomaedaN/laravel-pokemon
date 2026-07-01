@@ -13,4 +13,10 @@ class Pokemon extends Model
     {
         return $this->belongsToMany(Type::class);
     }
+
+    public function teams()
+    {
+    return $this->belongsToMany(Team::class, 'pokemon_team')
+                ->withTimestamps();
+    }
 }
